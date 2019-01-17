@@ -4,6 +4,9 @@ Docker implementation of BeEF Browser Exploitation Framework using Alpine Linux 
 
 https://github.com/beefproject/beef
 
+If you are viewing this on docker hub, clone the full repo at https://github.com/isaudits/docker-beef
+to get the launcher scripts and alias files described below.
+
 ## Usage
 Override environment variables for ip addresses, credentials, etc with .env file.
 
