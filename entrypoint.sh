@@ -14,7 +14,7 @@ if [ -n "$BEEF_PUBLIC_IP" ]; then
 fi
 
 if [ "$BEEF_MSF_ENABLE" == "true" ]; then
-    sed -i "{N;s/metasploit:\n            enable: false/metasploit:\n            enable: $BEEF_MSF_ENABLE/}" config.yaml
+    sed -i '1N;$!N;s/metasploit:\n\s\{1,\}enable:\sfalse/metasploit:\n            enable: true/g;P;D' config.yaml
     # add leading space so we dont mangle callback host too!
     sed -i "s/ host: \"127.0.0.1\"/ host: \"$MSF_RPC_HOST\"/" extensions/metasploit/config.yaml
     sed -i "s/port: 55552/port: $MSF_RPC_PORT/" extensions/metasploit/config.yaml
@@ -28,13 +28,13 @@ fi
 
 if [ "$BEEF_SE_ENABLE" == "true" ]; then
     #Probably not necessary - enabled by default in config file...
-    sed -i "{N;s/social_engineering:\n            enable: false/social_engineering:\n            enable: $BEEF_SE_ENABLE/}" config.yaml
+    sed -i "{N;s/social_engineering:\n            enable: false/social_engineering:\n            enable: true/}" config.yaml
     sed -i "s/msf_reverse_handler_host: \"172.16.45.1\"/msf_reverse_handler_host: \"$SE_POSH_HOST\"/" extensions/social_engineering/config.yaml
     sed -i "s/msf_reverse_handler_port: \"443\"/msf_reverse_handler_port: \"$SE_POSH_PORT\"/" extensions/social_engineering/config.yaml
 fi
 
 if [ "$BEEF_PHISHINGFRENZY_ENABLE" == "true" ]; then
-    sed -i "{N;s/phishing_frenzy:\n            enable: false/phishing_frenzy:\n            enable: $BEEF_PHISHINGFRENZY_ENABLE/}" config.yaml
+    sed -i '1N;$!N;s/phishing_frenzy:\n\s\{1,\}enable:\sfalse/phishing_frenzy:\n            enable: true/g;P;D' config.yaml
 fi
 
 # Slow your roll in case we need to wait on metasploit to load...
