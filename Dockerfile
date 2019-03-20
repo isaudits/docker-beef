@@ -33,6 +33,11 @@ ENV BEEF_WAITTIME="0" \
     BEEF_SE_ENABLE="false"  \
     #SE_POSH_HOST="fqdn.domain.com" \
     #SE_POSH_PORT="4343" \
+    BEEF_EMAIL_ENABLE="false" \
+    #BEEF_EMAIL_TO="none@none.com" \
+    #BEEF_EMAIL_FROM="none@none.com" \
+    #BEEF_EMAIL_HOST="smtp.none.com" \
+    #BEEF_EMAIL_PORT="25" \
     BEEF_PHISHINGFRENZY_ENABLE="false"
 
 #NOTE - have to chmod 755 entrypoint script on source filesystem or it will not be executable inside container!

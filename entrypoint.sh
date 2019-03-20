@@ -25,12 +25,20 @@ if [ "$BEEF_MSF_ENABLE" == "true" ]; then
     sed -i "s/ssl_verify: true/ssl_verify: $MSF_SSL_VERIFY/" extensions/metasploit/config.yaml
 fi
 
-
 if [ "$BEEF_SE_ENABLE" == "true" ]; then
     #Probably not necessary - enabled by default in config file...
     sed -i "{N;s/social_engineering:\n            enable: false/social_engineering:\n            enable: true/}" config.yaml
     sed -i "s/msf_reverse_handler_host: \"172.16.45.1\"/msf_reverse_handler_host: \"$SE_POSH_HOST\"/" extensions/social_engineering/config.yaml
     sed -i "s/msf_reverse_handler_port: \"443\"/msf_reverse_handler_port: \"$SE_POSH_PORT\"/" extensions/social_engineering/config.yaml
+fi
+
+if [ "$BEEF_EMAIL_ENABLE" == "true" ]; then
+    sed -i '1N;$!N;s/notifications:\n\s\{1,\}enable:\sfalse/notifications:\n            enable: true/g;P;D' extensions/notifications/config.yaml
+    sed -i '1N;$!N;s/email:\n\s\{1,\}enable:\sfalse/email:\n              enable: true/g;P;D' extensions/notifications/config.yaml
+    sed -i "s/from_address: sender_email_address/from_address: $BEEF_EMAIL_FROM/" extensions/notifications/config.yaml
+    sed -i "s/to_address: receipient_email_address/to_address: $BEEF_EMAIL_TO/" extensions/notifications/config.yaml
+    sed -i "s/smtp_host: 127.0.0.1/smtp_host: $BEEF_EMAIL_HOST/" extensions/notifications/config.yaml
+    sed -i "s/smtp_port: 25/smtp_port: $BEEF_EMAIL_PORT/" extensions/notifications/config.yaml
 fi
 
 if [ "$BEEF_PHISHINGFRENZY_ENABLE" == "true" ]; then
