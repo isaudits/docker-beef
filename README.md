@@ -1,6 +1,6 @@
 # docker-beef
 
-Docker implementation of BeEF Browser Exploitation Framework using Alpine Linux image base.
+Docker implementation of BeEF Browser Exploitation Framework.
 
 https://github.com/beefproject/beef
 
