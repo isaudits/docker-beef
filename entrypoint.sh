@@ -46,6 +46,8 @@ if [ "$BEEF_PHISHINGFRENZY_ENABLE" == "true" ]; then
     sed -i '1N;$!N;s/phishing_frenzy:\n\s\{1,\}enable:\sfalse/phishing_frenzy:\n            enable: true/g;P;D' config.yaml
 fi
 
+./update-geoipdb
+
 # Slow your roll in case we need to wait on metasploit to load...
 sleep $BEEF_WAITTIME
 
