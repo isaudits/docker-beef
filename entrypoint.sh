@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 sed -i "s/passwd: \"beef\"/passwd: \"$BEEF_PASSWORD\"/" config.yaml
 sed -i "s/user:   \"beef\"/user: \"$BEEF_USER\"/" config.yaml
