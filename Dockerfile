@@ -26,7 +26,6 @@ RUN apt-get update && \
     cd /home/beef && \
     bundle install --without test development && \
     ./generate-certificate && \
-    ./update-geoipdb && \
     rm -rf /home/beef/.git && \
     apt-get remove -y git build-essential automake && \
     apt-get autoremove -y && \
