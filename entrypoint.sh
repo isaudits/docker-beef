@@ -5,7 +5,7 @@ sed -i "s/user:   \"beef\"/user: \"$BEEF_USER\"/" config.yaml
 
 if [ "$BEEF_SSL" == "true" ]; then
     ./generate-certificate
-    sed -i "{N;s/https:\n            enable: false/https:\n            enable: true/}" config.yaml
+    sed -i '1N;$!N;s/https:\n\s\{1,\}enable:\sfalse/https:\n            enable: true/g;P;D' config.yaml
 fi
 
 if [ -n "$BEEF_PUBLIC_IP" ]; then
@@ -27,7 +27,7 @@ fi
 
 if [ "$BEEF_SE_ENABLE" == "true" ]; then
     #Probably not necessary - enabled by default in config file...
-    sed -i "{N;s/social_engineering:\n            enable: false/social_engineering:\n            enable: true/}" config.yaml
+    sed -i '1N;$!N;s/social_engineering:\n\s\{1,\}enable:\sfalse/social_engineering:\n            enable: true/g;P;D' config.yaml
     sed -i "s/msf_reverse_handler_host: \"172.16.45.1\"/msf_reverse_handler_host: \"$SE_POSH_HOST\"/" extensions/social_engineering/config.yaml
     sed -i "s/msf_reverse_handler_port: \"443\"/msf_reverse_handler_port: \"$SE_POSH_PORT\"/" extensions/social_engineering/config.yaml
 fi
