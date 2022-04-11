@@ -1,5 +1,5 @@
-FROM ruby:2.6-slim
-#FROM ruby:2.5.3-alpine
+FROM ruby:2.7-slim
+#FROM ruby:2.7.5-alpine
 
 WORKDIR /home/
 
@@ -39,6 +39,7 @@ ENV BEEF_WAITTIME="0" \
     BEEF_SSL="true" \
     #BEEF_PUBLIC_IP="fqdn.domain.com" \
     #BEEF_PUBLIC_PORT="443" \
+    #BEEF_SSL_PUBLIC="true" \
     BEEF_MSF_ENABLE="false" \
     #MSF_RPC_HOST="0.0.0.0" \
     #MSF_RPC_PORT="55553" \
