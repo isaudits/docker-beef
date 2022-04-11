@@ -8,6 +8,10 @@ if [ "$BEEF_SSL" == "true" ]; then
     sed -i '1N;$!N;s/https:\n\s\{1,\}enable:\sfalse/https:\n            enable: true/g;P;D' config.yaml
 fi
 
+if [ "$BEEF_SSL_PUBLIC" == "true" ]; then
+    sed -i "s/public_enabled: false/public_enabled: true/" config.yaml
+fi
+
 if [ -n "$BEEF_PUBLIC_IP" ]; then
     sed -i "s/allow_reverse_proxy: false/allow_reverse_proxy: true/" config.yaml
     sed -i "s/#public: \"\"/public: \"$BEEF_PUBLIC_IP\"/" config.yaml
