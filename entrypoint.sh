@@ -10,12 +10,14 @@ fi
 
 if [ "$BEEF_SSL_PUBLIC" == "true" ]; then
     sed -i "s/public_enabled: false/public_enabled: true/" config.yaml
+    sed -i "s/#     https: false/     https: true/" config.yaml
 fi
 
 if [ -n "$BEEF_PUBLIC_IP" ]; then
     sed -i "s/allow_reverse_proxy: false/allow_reverse_proxy: true/" config.yaml
-    sed -i "s/#public: \"\"/public: \"$BEEF_PUBLIC_IP\"/" config.yaml
-    sed -i "s/#public_port: \"\"/public_port: \"$BEEF_PUBLIC_PORT\"/" config.yaml
+    sed -i "s/# public:/public:/" config.yaml
+    sed -i "s/#     host: \"\"/     host: \"$BEEF_PUBLIC_IP\"/" config.yaml
+    sed -i "s/#     port: \"\"/     port: \"$BEEF_PUBLIC_PORT\"/" config.yaml
 fi
 
 if [ "$BEEF_MSF_ENABLE" == "true" ]; then
