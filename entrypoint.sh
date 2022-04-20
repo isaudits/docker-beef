@@ -8,6 +8,11 @@ if [ "$BEEF_SSL" == "true" ]; then
     sed -i '1N;$!N;s/https:\n\s\{1,\}enable:\sfalse/https:\n            enable: true/g;P;D' config.yaml
 fi
 
+if [ "$BEEF_DEBUG" == "true" ]; then
+    sed -i "s/debug: false/debug: true/" config.yaml
+    sed -i "s/client_debug: false/client_debug: true/" config.yaml
+fi
+
 if [ "$BEEF_SSL_PUBLIC" == "true" ]; then
     sed -i "s/public_enabled: false/public_enabled: true/" config.yaml
     sed -i "s/#     https: false/     https: true/" config.yaml
@@ -52,7 +57,8 @@ if [ "$BEEF_PHISHINGFRENZY_ENABLE" == "true" ]; then
     sed -i '1N;$!N;s/phishing_frenzy:\n\s\{1,\}enable:\sfalse/phishing_frenzy:\n            enable: true/g;P;D' config.yaml
 fi
 
-./update-geoipdb
+# NOTE - update-geoipdb no longer working...need to look into this!
+#./update-geoipdb
 
 # Slow your roll in case we need to wait on metasploit to load...
 sleep $BEEF_WAITTIME

@@ -34,6 +34,7 @@ RUN apt-get update && \
 WORKDIR /home/beef/
 
 ENV BEEF_WAITTIME="0" \
+    BEEF_DEBUG="false" \
     BEEF_USER="beefuser" \
     BEEF_PASSWORD="beefpass" \
     BEEF_SSL="true" \
