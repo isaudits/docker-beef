@@ -4,7 +4,6 @@ sed -i "s/passwd: \"beef\"/passwd: \"$BEEF_PASSWORD\"/" config.yaml
 sed -i "s/user:   \"beef\"/user: \"$BEEF_USER\"/" config.yaml
 
 if [ "$BEEF_SSL" == "true" ]; then
-    ./generate-certificate
     sed -i '1N;$!N;s/https:\n\s\{1,\}enable:\sfalse/https:\n            enable: true/g;P;D' config.yaml
 fi
 

@@ -24,7 +24,6 @@ RUN apt-get update && \
     git clone --depth=1 --recursive https://github.com/beefproject/beef/ /home/beef && \
     cd /home/beef && \
     bundle install --without test development && \
-    ./generate-certificate && \
     rm -rf /home/beef/.git && \
     apt-get remove -y git build-essential automake && \
     apt-get autoremove -y && \
