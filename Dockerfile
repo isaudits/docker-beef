@@ -1,5 +1,4 @@
-FROM ruby:2.7-slim
-#FROM ruby:2.7.5-alpine
+FROM ruby:3.2.1-slim-bullseye
 
 WORKDIR /home/
 
