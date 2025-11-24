@@ -14,7 +14,7 @@ fi
 
 if [ "$BEEF_SSL_PUBLIC" == "true" ]; then
     sed -i "s/public_enabled: false/public_enabled: true/" config.yaml
-    sed -i "s/#    https: false/     https: true/" config.yaml
+    sed -i "s/#    https: false/    https: true/" config.yaml
 fi
 
 if [ -n "$BEEF_PUBLIC_IP" ]; then
