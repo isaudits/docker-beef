@@ -19,9 +19,9 @@ fi
 
 if [ -n "$BEEF_PUBLIC_IP" ]; then
     sed -i "s/allow_reverse_proxy: false/allow_reverse_proxy: true/" config.yaml
-    sed -i "s/# public:/public:/" config.yaml
-    sed -i "s/#     host: \"\"/     host: \"$BEEF_PUBLIC_IP\"/" config.yaml
-    sed -i "s/#     port: \"\"/     port: \"$BEEF_PUBLIC_PORT\"/" config.yaml
+    sed -i "s/#public:/public:/" config.yaml
+    sed -i "s/#    host: \"\"/    host: \"$BEEF_PUBLIC_IP\"/" config.yaml
+    sed -i "s/#    port: \"\"/    port: \"$BEEF_PUBLIC_PORT\"/" config.yaml
 fi
 
 if [ "$BEEF_MSF_ENABLE" == "true" ]; then
