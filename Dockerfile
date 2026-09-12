@@ -1,4 +1,4 @@
-FROM ruby:3.2.1-slim-bullseye
+FROM ruby:3.2-slim-bookworm
 
 WORKDIR /home/
 
